@@ -32,7 +32,7 @@ object camion {
     }
 
     method obtenerPrimerContenidoConPeligrosidadDe_(nuevaCantidad){
-        return almacenamiento.filter({unContenido => unContenido.peligrosidad() == nuevaCantidad })//.first()
+        return almacenamiento.find({unContenido => unContenido.peligrosidad() == nuevaCantidad })//.first()
     }
 
     method obtenerContenidoConPeligrosidadMayorA_(nuevaCantidad){
@@ -58,5 +58,5 @@ object camion {
     method obtenerContenidoConMayorPeso(){
         return almacenamiento.max({unContenido => unContenido.peso()})
     }
-    
+
 }

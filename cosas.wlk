@@ -12,7 +12,7 @@ object knightRider {
 
 object bumblebee {
 
-    var estaTransformado = true
+    var estaTransformado = false
 
     var pesoActual = 800
 
@@ -65,7 +65,7 @@ object arenaAGranel {
 
 object bateriaAntiaeria {
 
-    var estaConMisiles = false
+    var estaConMisiles = true
 
     method peso(){
         if(estaConMisiles){

@@ -1,9 +1,39 @@
 import cosas.*
+import camion.*
 
-describe "group of test for cosas" {
+describe "Test de las cosas" {
 
-  test "first test" {
-    assert.that(true)
-  }
+    test "Paquete de ladrillos" {
+        paqueteDeLadrillos.cambiarCantidadDeLadrillos(50)
+        assert.equals(100, paqueteDeLadrillos.peso())
+        assert.equals(2, paqueteDeLadrillos.peligrosidad())
+    }
+
+    test "Batería antiaérea" {
+        bateriaAntiaeria.activarMisiles()
+        assert.equals(300, bateriaAntiaeria.peso())
+        assert.equals(100, bateriaAntiaeria.peligrosidad())
+
+        bateriaAntiaeria.desactivarMisiles()
+        assert.equals(200, bateriaAntiaeria.peso())
+        assert.equals(0, bateriaAntiaeria.peligrosidad())
+    }
+
+    test "Embalaje de seguridad con residuos radioactivos de 30 kg" {
+        residuosRadiactivos.cambiarPeso(30)
+        embalajeDeSeguridad.cambiarContenido(residuosRadiactivos)
+
+        assert.equals(30, embalajeDeSeguridad.peso())
+        assert.equals(100, embalajeDeSeguridad.peligrosidad())
+    }
+
+    test "Contenedor portuario con cosas a eleccion" {
+        arenaAGranel.cambiarPeso(100)
+        contenedorPortuario.agregarContenido(arenaAGranel)
+        contenedorPortuario.agregarContenido(knightRider)
+
+        assert.equals(700, contenedorPortuario.peso())
+        assert.equals(10, contenedorPortuario.peligrosidad())
+    }
 
 }
