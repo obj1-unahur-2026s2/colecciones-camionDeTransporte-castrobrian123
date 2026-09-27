@@ -1,5 +1,5 @@
 
-object KnightRider {
+object knightRider {
 
     var pesoActual = 500
 
@@ -138,7 +138,7 @@ object residuosRadiactivos {
 object embalajeDeSeguridad {
     //lo hare despues
 
-    var contenidoActual = KnightRider
+    var contenidoActual = knightRider
 
     method contenido() = contenidoActual
 

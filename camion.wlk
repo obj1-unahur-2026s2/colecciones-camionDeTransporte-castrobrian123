@@ -3,7 +3,13 @@ import cosas.*
 object camion {
     var almacenamiento = []
 
-    //method verAlmacenamiento() = almacenamiento
+    //[knightRider,bumblebee,paqueteDeLadrillos,arenaAGranel,bateriaAntiaeria,contenedorPortuario,residuosRadiactivos,embalajeDeSeguridad]
+
+    method almacenamiento() = almacenamiento
+
+    method agregarTodosLosContenidos(unaListaDeContenidos){
+        almacenamiento.addAll(unaListaDeContenidos)
+    }
 
     method cargarContenido(unContenido){
         almacenamiento.add(unContenido)
@@ -26,21 +32,23 @@ object camion {
     }
 
     method obtenerPrimerContenidoConPeligrosidadDe_(nuevaCantidad){
-        return almacenamiento.filter({unContenido => unContenido.peligrosidad() == nuevaCantidad}).first()
+        return almacenamiento.filter({unContenido => unContenido.peligrosidad() == nuevaCantidad })//.first()
     }
 
     method obtenerContenidoConPeligrosidadMayorA_(nuevaCantidad){
         return almacenamiento.filter({unContenido => unContenido.peligrosidad() > nuevaCantidad})
     }
 
-    // falta alguno
+    method obtenerContenidoQueSupereLaPeligrosidadDe_(algunContenido){
+        return almacenamiento.filter({unContenido => unContenido.peligrosidad() > algunContenido.peligrosidad()})
+    }
 
     method noEstaExcedidoDePeso(){
         return almacenamiento.sum({unContenido => unContenido.peso()}) <= 2500
     }
 
-    method puedeCircular(){
-        return self.noEstaExcedidoDePeso() and self.obtenerContenidoConPeligrosidadMayorA_(1)
+    method puedeCircularConPeligrosidadDe_(nuevaCantidad){
+        return self.noEstaExcedidoDePeso() and almacenamiento.all({unContenido => unContenido.peligrosidad() <= nuevaCantidad})
     }
 
     method existeAlgunContenidoQuePesaEntre_Y_(primerNumero,segundoNumero){
@@ -50,10 +58,5 @@ object camion {
     method obtenerContenidoConMayorPeso(){
         return almacenamiento.max({unContenido => unContenido.peso()})
     }
-
-
-
-
-
-
+    
 }
